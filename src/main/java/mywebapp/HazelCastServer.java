@@ -34,5 +34,4 @@ class HazelCastServer {
         }
         return dataMap.get(index);
     }
-
 }
