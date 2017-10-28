@@ -23,6 +23,7 @@ class HazelCastServer {
         HazelcastKubernetesDiscoveryStrategyFactory factory = new HazelcastKubernetesDiscoveryStrategyFactory();
         DiscoveryStrategyConfig strategyConfig = new DiscoveryStrategyConfig(factory);
         strategyConfig.addProperty("service-name", "jetty-service");
+        strategyConfig.addProperty("service-label-name", "jetty");
         discoveryConfig.addDiscoveryStrategyConfig(strategyConfig);
         hzInstance = Hazelcast.newHazelcastInstance(cfg);
     }
