@@ -68,7 +68,6 @@
       <dependency>
           <groupId>com.hazelcast</groupId>
           <artifactId>hazelcast-kubernetes</artifactId>
-          <artifactId>hazelcast-kubernetes</artifactId>
           <version>1.0.0</version>
       </dependency>
   </dependencies>
