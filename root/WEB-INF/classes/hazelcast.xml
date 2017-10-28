@@ -17,7 +17,7 @@
 
                     <properties>
                         <!-- configure discovery service API lookup -->
-                        <property name="service-name">jetty-service</property>
+                        <property name="service-name">jetty</property>
                         <!--<property name="service-label-name">cluster01</property>-->
                         <!--<property name="service-label-value">true</property>-->
                         <!--<property name="namespace">MY-KUBERNETES-NAMESPACE</property>-->
