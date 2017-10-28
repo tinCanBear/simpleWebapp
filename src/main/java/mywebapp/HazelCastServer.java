@@ -14,20 +14,8 @@ class HazelCastServer {
     private HazelcastInstance hzInstance = null;
 
     private HazelCastServer(){
-//        Config cfg = null;
-//        try {
-//            cfg = new XmlConfigBuilder("/var/lib/jetty/webapps/root/WEB-INF/hazelcast.xml").build();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//            System.out.println("hz xml file not found");
-//            cfg = new Config();
-//        }
         Config cfg = new Config();
-//
         NetworkConfig networkConfig = cfg.getNetworkConfig();
-//        networkConfig.setPort(hazelcastNetworkPort);
-//        networkConfig.setPortAutoIncrement(true);
-//        networkConfig.setPortCount(100);
         JoinConfig joinConfig = networkConfig.getJoin();
         joinConfig.getMulticastConfig().setEnabled(false);
         joinConfig.getTcpIpConfig().setEnabled(false);
