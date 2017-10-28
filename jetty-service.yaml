@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: jetty-service
   labels:
-    name: jetty-service
+    name: jetty
 spec:
   type: NodePort
   ports:
