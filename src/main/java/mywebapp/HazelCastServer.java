@@ -16,7 +16,7 @@ class HazelCastServer {
     private HazelCastServer(){
         Config cfg = null;
         try {
-            cfg = new FileSystemXmlConfig("/var/lib/jetty/webapps/root/WEB-INF/classes/hazelcast.xml");
+            cfg = new FileSystemXmlConfig("/var/lib/jetty/webapps/root/WEB-INF/hazelcast.xml");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("hz xml file not found");
