@@ -1,9 +1,11 @@
 package mywebapp;
 
 import com.hazelcast.config.Config;
+import com.hazelcast.config.FileSystemXmlConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 
+import java.io.FileNotFoundException;
 import java.util.Map;
 
 class HazelCastServer {
@@ -12,7 +14,14 @@ class HazelCastServer {
     private HazelcastInstance hzInstance = null;
 
     private HazelCastServer(){
-        Config cfg = new Config();
+        Config cfg = null;
+        try {
+            cfg = new FileSystemXmlConfig("/var/lib/jetty/webapps/root/WEB-INF/classes/hazelcast.xml");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("hz xml file not found");
+            cfg = new Config();
+        }
         hzInstance = Hazelcast.newHazelcastInstance(cfg);
     }
 
