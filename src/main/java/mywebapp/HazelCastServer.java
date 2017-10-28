@@ -1,10 +1,9 @@
 package mywebapp;
 
-import com.hazelcast.config.Config;
-import com.hazelcast.config.FileSystemXmlConfig;
-import com.hazelcast.config.XmlConfigBuilder;
+import com.hazelcast.config.*;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
+import com.hazelcast.kubernetes.HazelcastKubernetesDiscoveryStrategyFactory;
 
 import java.io.FileNotFoundException;
 import java.util.Map;
@@ -15,14 +14,28 @@ class HazelCastServer {
     private HazelcastInstance hzInstance = null;
 
     private HazelCastServer(){
-        Config cfg = null;
-        try {
-            cfg = new XmlConfigBuilder("/var/lib/jetty/webapps/root/WEB-INF/hazelcast.xml").build();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("hz xml file not found");
-            cfg = new Config();
-        }
+//        Config cfg = null;
+//        try {
+//            cfg = new XmlConfigBuilder("/var/lib/jetty/webapps/root/WEB-INF/hazelcast.xml").build();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//            System.out.println("hz xml file not found");
+//            cfg = new Config();
+//        }
+        Config cfg = new Config();
+//
+        NetworkConfig networkConfig = cfg.getNetworkConfig();
+//        networkConfig.setPort(hazelcastNetworkPort);
+//        networkConfig.setPortAutoIncrement(true);
+//        networkConfig.setPortCount(100);
+        JoinConfig joinConfig = networkConfig.getJoin();
+        joinConfig.getMulticastConfig().setEnabled(false);
+        joinConfig.getTcpIpConfig().setEnabled(false);
+        DiscoveryConfig discoveryConfig = joinConfig.getDiscoveryConfig();
+        HazelcastKubernetesDiscoveryStrategyFactory factory = new HazelcastKubernetesDiscoveryStrategyFactory();
+        DiscoveryStrategyConfig strategyConfig = new DiscoveryStrategyConfig(factory);
+        strategyConfig.addProperty("service-name", "jetty-service");
+        discoveryConfig.addDiscoveryStrategyConfig(strategyConfig);
         hzInstance = Hazelcast.newHazelcastInstance(cfg);
     }
 
