@@ -2,6 +2,7 @@ package mywebapp;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.FileSystemXmlConfig;
+import com.hazelcast.config.XmlConfigBuilder;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 
@@ -16,7 +17,7 @@ class HazelCastServer {
     private HazelCastServer(){
         Config cfg = null;
         try {
-            cfg = new FileSystemXmlConfig("/var/lib/jetty/webapps/root/WEB-INF/hazelcast.xml");
+            cfg = new XmlConfigBuilder("/var/lib/jetty/webapps/root/WEB-INF/hazelcast.xml").build();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("hz xml file not found");
