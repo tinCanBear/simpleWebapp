@@ -57,13 +57,8 @@
 
       <dependency>
           <groupId>com.hazelcast</groupId>
-          <artifactId>hazelcast-all</artifactId>
-          <version>3.7.8</version>
-      </dependency>
-      <dependency>
-          <groupId>com.hazelcast</groupId>
-          <artifactId>hazelcast-client</artifactId>
-          <version>3.7.8</version>
+          <artifactId>hazelcast</artifactId>
+          <version>3.9</version>
       </dependency>
       <dependency>
           <groupId>com.hazelcast</groupId>
