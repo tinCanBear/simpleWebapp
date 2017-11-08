@@ -15,7 +15,7 @@
             <!-- activate the Kubernetes plugin -->
             <discovery-strategies>
                 <discovery-strategy enabled="true"
-                                    class="com.hazelcast.HazelcastKubernetesDiscoveryStrategy">
+                                    class="com.hazelcast.kubernetes.HazelcastKubernetesDiscoveryStrategy">
 
                     <properties>
                         <property name="service-name">jetty</property>
