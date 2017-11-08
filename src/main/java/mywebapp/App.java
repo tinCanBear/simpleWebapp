@@ -14,7 +14,6 @@ public class App
 {
     public static void main( String[] args )
     {
-
         ResourceConfig config = new ResourceConfig();
         config.packages("mywebapp");
         ServletHolder servlet = new ServletHolder(new ServletContainer(config));
