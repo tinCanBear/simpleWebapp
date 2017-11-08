@@ -25,7 +25,6 @@ public class App
         context.addServlet(servlet, "/*");
         context.setContextPath("/");
 
-
             try {
                 server.start();
                 server.join();
@@ -35,6 +34,5 @@ public class App
         finally {
         server.destroy();
     }
-    System.out.println( "Hello World!" );
     }
 }

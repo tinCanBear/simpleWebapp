@@ -16,3 +16,6 @@ spec:
         image: happywhaler/simplewebapp:latest
         ports:
         - containerPort: 8080
+          name: jetty
+        - containerPort: 5701
+          name: hazelcast

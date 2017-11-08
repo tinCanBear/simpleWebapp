@@ -12,6 +12,10 @@ spec:
       targetPort: 8080
       protocol: TCP
       name: http
+    - port: 5701
+      targetPort: 5701
+      protocol: TCP
+      name: hazelcast
   # label keys and values that must match in order to receive traffic for this service
   selector:
     name: jetty

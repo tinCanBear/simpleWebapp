@@ -17,14 +17,14 @@ class HazelCastServer {
         Config cfg = new Config();
         NetworkConfig networkConfig = cfg.getNetworkConfig();
         JoinConfig joinConfig = networkConfig.getJoin();
-        joinConfig.getMulticastConfig().setEnabled(false);
-        joinConfig.getTcpIpConfig().setEnabled(false);
-        DiscoveryConfig discoveryConfig = joinConfig.getDiscoveryConfig();
-        HazelcastKubernetesDiscoveryStrategyFactory factory = new HazelcastKubernetesDiscoveryStrategyFactory();
-        DiscoveryStrategyConfig strategyConfig = new DiscoveryStrategyConfig(factory);
-        strategyConfig.addProperty("service-name", "jetty-service");
-        strategyConfig.addProperty("service-label-name", "jetty");
-        discoveryConfig.addDiscoveryStrategyConfig(strategyConfig);
+        joinConfig.getMulticastConfig().setEnabled(true);
+//        joinConfig.getTcpIpConfig().setEnabled(false);
+//        DiscoveryConfig discoveryConfig = joinConfig.getDiscoveryConfig();
+//        HazelcastKubernetesDiscoveryStrategyFactory factory = new HazelcastKubernetesDiscoveryStrategyFactory();
+//        DiscoveryStrategyConfig strategyConfig = new DiscoveryStrategyConfig(factory);
+//        strategyConfig.addProperty("service-name", "jetty-service");
+//        strategyConfig.addProperty("service-label-name", "jetty");
+//        discoveryConfig.addDiscoveryStrategyConfig(strategyConfig);
         hzInstance = Hazelcast.newHazelcastInstance(cfg);
     }
 
