@@ -14,27 +14,12 @@ class HazelCastServer {
     private HazelcastInstance hzInstance = null;
 
     private HazelCastServer(){
-//        Config cfg = new Config();
         Config cfg = null;
         try {
             cfg = new XmlConfigBuilder("/var/lib/jetty/webapps/root/WEB-INF/hazelcast.xml").build();
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        NetworkConfig networkConfig = cfg.getNetworkConfig();
-//        networkConfig.setPort(5701);
-//        networkConfig.setPortAutoIncrement(true);
-//        networkConfig.setPortCount(100);
-//        JoinConfig joinConfig = networkConfig.getJoin();
-//        joinConfig.getMulticastConfig().setEnabled(false);
-//        joinConfig.getTcpIpConfig().setEnabled(false);
-//        DiscoveryConfig discoveryConfig = joinConfig.getDiscoveryConfig();
-//        HazelcastKubernetesDiscoveryStrategyFactory factory = new HazelcastKubernetesDiscoveryStrategyFactory();
-//        DiscoveryStrategyConfig strategyConfig = new DiscoveryStrategyConfig(factory);
-//        strategyConfig.addProperty("service-name", "jetty");
-//        strategyConfig.addProperty("service-label-name", "app");
-//        strategyConfig.addProperty("service-label-value", "jetty");
-//        discoveryConfig.addDiscoveryStrategyConfig(strategyConfig);
         hzInstance = Hazelcast.newHazelcastInstance(cfg);
     }
 

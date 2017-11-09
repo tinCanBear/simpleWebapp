@@ -4,10 +4,6 @@ import javax.servlet.http.HttpServlet;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-/**
- * Hello world!
- *
- */
 @Path("data")
 public class Resource{
     HazelCastServer hcs = HazelCastServer.getInstance();
